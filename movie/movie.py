@@ -9,6 +9,8 @@ class MovieServicer(movie_pb2_grpc.MovieServicer):
     def __init__(self):
         with open('{}/data/movies.json'.format("."), "r") as jsf:
             self.db = json.load(jsf)["movies"]
+        with open('{}/data/actors.json'.format("."), "r") as jsf:
+            self.actorsdb = json.load(jsf)["actors"]
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
